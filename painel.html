@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel da Helena</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="protegerPagina()">
+
+  <!-- Botão de pesquisa (lupa) -->
+  <button class="btn-pesquisa" onclick="togglePesquisa()">🔍</button>
+
+  <div class="container">
+    <h1>Painel de Convidados</h1>
+
+    <!-- Campo de pesquisa (oculto por padrão) -->
+    <div id="box-pesquisa" class="card" style="display:none;">
+      <input
+        type="text"
+        id="pesquisa"
+        placeholder="Pesquisar convidado..."
+        onkeyup="filtrarConvidados()"
+      >
+      <button onclick="alternarOrdem()">Ordenar A ↔ Z</button>
+    </div>
+
+    <!-- CONTADOR ÚNICO -->
+    <div class="card">
+      <p>
+        <strong>Total de pessoas confirmadas:</strong>
+        <span id="total-confirmados">0</span>
+      </p>
+    </div>
+
+    <!-- LISTA ÚNICA -->
+    <div id="lista-confirmados"></div>
+
+    <a href="login.html" class="btn-link" onclick="logout()">Sair</a>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/painel.js"></script>
+</body>
+</html>

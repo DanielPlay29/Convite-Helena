@@ -1,0 +1,243 @@
+/* =====================
+   RESET E BASE
+===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #F8EDEE;
+  color: #4A4A4A;
+  text-align: center;
+}
+
+/* =====================
+   LOGO / TOPO
+===================== */
+.logo-topo {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.logo-topo img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+}
+
+/* =====================
+   BOTÕES DE LINK
+===================== */
+.btn-entrar,
+a.btn-link {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 22px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid #5E7FA3;
+  color: #5E7FA3;
+}
+
+.btn-entrar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.btn-entrar:hover,
+a.btn-link:hover {
+  background: #5E7FA3;
+  color: #FFFFFF;
+}
+
+/* =====================
+   CONTAINER
+===================== */
+.container {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px 20px 40px;
+}
+
+/* =====================
+   TÍTULOS
+===================== */
+h1 {
+  font-family: 'Playfair Display', serif;
+  color: #5E7FA3;
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #7A8FA6;
+  margin-bottom: 35px;
+}
+
+/* =====================
+   CARD
+===================== */
+.card {
+  background: #FFFFFF;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 15px 30px rgba(94, 127, 163, 0.15);
+  margin-bottom: 20px;
+}
+
+/* =====================
+   FORMULÁRIOS
+===================== */
+label {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  margin: 12px 0 6px;
+  color: #5E7FA3;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  border: 1px solid #AFC2D4;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* =====================
+   CAMPO SENHA (LOGIN)
+===================== */
+.campo-senha {
+  position: relative;
+}
+
+.campo-senha input {
+  padding-right: 90px;
+}
+
+.toggle-senha {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #5E7FA3;
+  cursor: pointer;
+}
+
+.toggle-senha:hover {
+  text-decoration: underline;
+}
+
+/* =====================
+   BOTÕES
+===================== */
+button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #AFC2D4, #5E7FA3);
+  color: #FFFFFF;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   BOTÃO PESQUISA (PAINEL)
+===================== */
+.btn-pesquisa {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background: #5E7FA3;
+  color: #FFFFFF;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* =====================
+   LISTA DE CONVIDADOS
+===================== */
+.convidado-item {
+  background: #FFFFFF;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  box-shadow: 0 10px 22px rgba(94, 127, 163, 0.12);
+  overflow: hidden;
+}
+
+.convidado-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #5E7FA3;
+}
+
+.seta {
+  margin-right: 10px;
+  transition: transform 0.2s ease;
+}
+
+.nome {
+  flex: 1;
+  text-align: left;
+}
+
+.convidado-detalhes {
+  display: none;
+  padding: 14px 16px;
+  border-top: 1px solid #E6EEF5;
+  font-size: 14px;
+  text-align: left;
+}
+
+.convidado-detalhes .data {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* Botão Excluir convidado */
+.convidado-detalhes button {
+  margin-top: 12px;
+  background: #c0392b;
+}
+
+.convidado-detalhes button:hover {
+  opacity: 0.85;
+}
+
+/* =====================
+   PESQUISA (PAINEL)
+===================== */
+#box-pesquisa {
+  margin-bottom: 20px;
+}

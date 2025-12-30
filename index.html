@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmação de Presença | Helena</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- LOGO / NOME EM IMAGEM -->
+  <div class="logo-topo">
+    <img src="Images/helena.png.png"Helena Freitas">
+  </div>
+
+  <!-- Botão Entrar -->
+  <a href="login.html" class="btn-entrar">Área da Debutante</a>
+
+  <div class="container">
+    <p class="subtitle">CONFIRMAÇÃO DE PRESENÇA</p>
+
+    <div class="card">
+      <form id="rsvpForm">
+
+        <input type="text" id="nome" placeholder="Nome completo *" required>
+
+        <label>Você poderá comparecer na festa? *</label>
+        <select id="presenca" required>
+          <option value="">Selecione</option>
+          <option value="Sim, com certeza estarei lá!">Sim, com certeza estarei lá!</option>
+          <option value="Infelizmente, não poderei comparecer">Infelizmente, não poderei comparecer</option>
+        </select>
+
+        <label>Alguém irá com você?</label>
+        <select id="acompanhantesQtd">
+          <option value="Apenas eu">Apenas eu</option>
+          <option value="1">1 acompanhante</option>
+          <option value="2">2 acompanhantes</option>
+          <option value="3 ou mais">3 ou mais acompanhantes</option>
+        </select>
+
+        <textarea id="acompanhantesNomes" placeholder="Nome dos acompanhantes (caso houver)"></textarea>
+
+        <textarea id="mensagem" placeholder="Se puder, deixe uma mensagem para a debutante 😁"></textarea>
+
+        <button type="submit">Confirmar Presença</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/form.js"></script>
+</body>
+</html>

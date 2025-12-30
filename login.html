@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel da Helena</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Painel da Helena</h1>
+    <p class="subtitle">ACESSO RESTRITO</p>
+
+    <div class="card">
+      <input type="text" id="user" placeholder="Usuário">
+
+      <!-- Campo senha com opção visualizar -->
+      <div class="campo-senha">
+        <input type="password" id="pass" placeholder="Senha">
+        <span class="toggle-senha" onclick="verSenha()">👁 Ver senha</span>
+      </div>
+
+      <button onclick="login()">Entrar</button>
+
+      <!-- Botão voltar ao formulário -->
+      <a href="index.html" class="btn-link" style="margin-top: 15px; display: inline-block;">
+        ← Voltar ao convite
+      </a>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
