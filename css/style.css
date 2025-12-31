@@ -241,3 +241,65 @@ button:hover {
 #box-pesquisa {
   margin-bottom: 20px;
 }
+/* =====================
+   AJUSTES RESPONSIVOS MOBILE
+===================== */
+
+/* Evita problemas de altura fixa no mobile */
+body {
+  min-height: 100vh;
+}
+
+/* Garante largura correta no celular */
+.container {
+  width: 100%;
+}
+
+/* Corrige comportamento no mobile */
+@media (max-width: 480px) {
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .logo-topo img {
+    max-width: 220px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* evita zoom automático no iPhone */
+  }
+
+  button {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  /* Botão Área da Debutante / Pesquisa não ficar colado */
+  .btn-entrar,
+  .btn-pesquisa {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+
