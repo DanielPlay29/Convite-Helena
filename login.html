@@ -2,6 +2,10 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+
+  <!-- ESSENCIAL PARA RESPONSIVIDADE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Painel da Helena</title>
 
   <link rel="stylesheet" href="css/style.css">
@@ -14,11 +18,21 @@
     <p class="subtitle">ACESSO RESTRITO</p>
 
     <div class="card">
-      <input type="text" id="user" placeholder="Usuário">
+      <input
+        type="text"
+        id="user"
+        placeholder="Usuário"
+        autocomplete="username"
+      >
 
       <!-- Campo senha com opção visualizar -->
       <div class="campo-senha">
-        <input type="password" id="pass" placeholder="Senha">
+        <input
+          type="password"
+          id="pass"
+          placeholder="Senha"
+          autocomplete="current-password"
+        >
         <span class="toggle-senha" onclick="verSenha()">👁 Ver senha</span>
       </div>
 
