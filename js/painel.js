@@ -1,29 +1,29 @@
-let convidados = JSON.parse(localStorage.getItem("convidados")) || [];
+import { db } from "./firebase.js";
+import {
+  collection,
+  onSnapshot,
+  deleteDoc,
+  doc
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const lista = document.getElementById("lista-confirmados");
 const totalConfirmados = document.getElementById("total-confirmados");
 
 let ordemAZ = true;
+let convidadosCache = [];
 
 /* Calcula total de pessoas (convidado + acompanhantes) */
 function calcularTotalPessoas(c) {
-  let acompanhantes = 0;
-
-  if (c.acompanhantesQtd === "1") acompanhantes = 1;
-  else if (c.acompanhantesQtd === "2") acompanhantes = 2;
-  else if (c.acompanhantesQtd === "3 ou mais") acompanhantes = 3;
-
-  return 1 + acompanhantes;
+  return 1 + (Number(c.acompanhantesQtd) || 0);
 }
 
-/* Renderiza lista */
-function renderizar(filtro = "") {
+/* Renderiza painel */
+function renderizarPainel(filtro = "") {
   lista.innerHTML = "";
   let totalPessoasConfirmadas = 0;
 
-  let filtrados = convidados
-    .map((c, index) => ({ ...c, _index: index })) // índice real
-    .filter(c => c.presenca && c.presenca.startsWith("Sim"))
+  let filtrados = convidadosCache
+    .filter(c => c.presenca === "Sim")
     .filter(c => c.nome.toLowerCase().includes(filtro));
 
   filtrados.sort((a, b) =>
@@ -37,8 +37,7 @@ function renderizar(filtro = "") {
 
     const item = document.createElement("div");
     item.className = "convidado-item";
-
-    const id = `conf-${c._index}`;
+    const id = `conf-${c.id}`;
 
     item.innerHTML = `
       <div class="convidado-header" onclick="toggleDetalhes('${id}')">
@@ -46,14 +45,13 @@ function renderizar(filtro = "") {
         <span class="nome">${c.nome}</span>
       </div>
 
-      <div class="convidado-detalhes" id="detalhes-${id}">
+      <div class="convidado-detalhes" id="detalhes-${id}" style="display:none">
         <p><strong>Acompanhantes:</strong> ${c.acompanhantesQtd}</p>
         <p><strong>Nomes:</strong> ${c.acompanhantesNomes || "—"}</p>
         <p><strong>Mensagem:</strong><br>${c.mensagem || "—"}</p>
-        <p class="data">Enviado em: ${c.data}</p>
 
-        <button onclick="excluirConvidado(${c._index})">
-          ❌ Excluir convidado
+        <button onclick="excluirConvidado('${c.id}')">
+          🗑 Excluir convidado
         </button>
       </div>
     `;
@@ -64,32 +62,40 @@ function renderizar(filtro = "") {
   totalConfirmados.textContent = totalPessoasConfirmadas;
 }
 
-/* Excluir convidado */
-function excluirConvidado(index) {
+/* 🔥 Tempo real: escuta Firestore */
+onSnapshot(collection(db, "convidados"), (snapshot) => {
+  convidadosCache = snapshot.docs.map(docSnap => ({
+    id: docSnap.id,
+    ...docSnap.data()
+  }));
+
+  renderizarPainel();
+});
+
+/* Excluir convidado (somente manualmente pela debutante) */
+window.excluirConvidado = async function (id) {
   if (!confirm("Tem certeza que deseja excluir este convidado?")) return;
-
-  convidados.splice(index, 1);
-  localStorage.setItem("convidados", JSON.stringify(convidados));
-
-  renderizar(document.getElementById("pesquisa")?.value.toLowerCase() || "");
-}
+  await deleteDoc(doc(db, "convidados", id));
+};
 
 /* Pesquisa */
-function filtrarConvidados() {
-  const termo = document.getElementById("pesquisa").value.toLowerCase();
-  renderizar(termo);
-}
+window.filtrarConvidados = function () {
+  const termo = document.getElementById("pesquisa")?.value.toLowerCase() || "";
+  renderizarPainel(termo);
+};
 
 /* Alternar ordem */
-function alternarOrdem() {
+window.alternarOrdem = function () {
   ordemAZ = !ordemAZ;
   filtrarConvidados();
-}
+};
 
 /* Expandir / recolher */
-function toggleDetalhes(id) {
+window.toggleDetalhes = function (id) {
   const detalhes = document.getElementById(`detalhes-${id}`);
   const seta = document.getElementById(`seta-${id}`);
+
+  if (!detalhes) return;
 
   if (detalhes.style.display === "block") {
     detalhes.style.display = "none";
@@ -98,13 +104,11 @@ function toggleDetalhes(id) {
     detalhes.style.display = "block";
     seta.textContent = "▼";
   }
-}
+};
 
-/* Mostrar/ocultar pesquisa */
-function togglePesquisa() {
+/* Mostrar / ocultar pesquisa */
+window.togglePesquisa = function () {
   const box = document.getElementById("box-pesquisa");
+  if (!box) return;
   box.style.display = box.style.display === "none" ? "block" : "none";
-}
-
-/* Inicializa */
-renderizar();
+};
