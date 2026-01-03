@@ -17,11 +17,9 @@ html, body {
   text-align: center;
 }
 
-/* Centralização inteligente */
+/* ❌ REMOVIDO display:flex DO BODY (causava o deslocamento no mobile) */
 body {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  display: block;
 }
 
 /* =====================
@@ -74,8 +72,8 @@ a.btn-link:hover {
 .container {
   width: 100%;
   max-width: 420px;
-  padding: 20px 20px 40px;
   margin: 0 auto;
+  padding: 20px 16px 40px;
 }
 
 /* =====================
@@ -265,8 +263,15 @@ button:hover {
 }
 
 /* =====================
-   TELAS MUITO PEQUENAS
+   AJUSTES MOBILE
 ===================== */
+@media (max-width: 768px) {
+  .btn-entrar {
+    top: 10px;
+    right: 10px;
+  }
+}
+
 @media (max-width: 360px) {
   .container {
     padding: 14px;
@@ -277,8 +282,6 @@ button:hover {
   }
 
   .btn-entrar {
-    top: 12px;
-    right: 12px;
     padding: 6px 14px;
     font-size: 12px;
   }
