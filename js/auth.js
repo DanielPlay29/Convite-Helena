@@ -1,6 +1,6 @@
 function login() {
-  const user = document.getElementById("user").value;
-  const pass = document.getElementById("pass").value;
+  const user = document.getElementById("user").value.trim();
+  const pass = document.getElementById("pass").value.trim();
 
   if (user === "helena" && pass === "1234") {
     localStorage.setItem("logado", "true");
@@ -18,10 +18,14 @@ function protegerPagina() {
 
 function logout() {
   localStorage.removeItem("logado");
+  window.location.href = "login.html";
 }
+
 function verSenha() {
   const campo = document.getElementById("pass");
   const botao = document.querySelector(".toggle-senha");
+
+  if (!campo) return;
 
   if (campo.type === "password") {
     campo.type = "text";
