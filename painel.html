@@ -2,6 +2,8 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Painel da Helena</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -14,7 +16,7 @@
   <div class="container">
     <h1>Painel de Convidados</h1>
 
-    <!-- Campo de pesquisa (oculto por padrão) -->
+    <!-- Campo de pesquisa -->
     <div id="box-pesquisa" class="card" style="display:none;">
       <input
         type="text"
@@ -25,7 +27,7 @@
       <button onclick="alternarOrdem()">Ordenar A ↔ Z</button>
     </div>
 
-    <!-- CONTADOR ÚNICO -->
+    <!-- CONTADOR -->
     <div class="card">
       <p>
         <strong>Total de pessoas confirmadas:</strong>
@@ -33,13 +35,15 @@
       </p>
     </div>
 
-    <!-- LISTA ÚNICA -->
+    <!-- LISTA -->
     <div id="lista-confirmados"></div>
 
     <a href="login.html" class="btn-link" onclick="logout()">Sair</a>
   </div>
 
+  <!-- SCRIPTS -->
   <script src="js/auth.js"></script>
-  <script src="js/painel.js"></script>
+  <!-- PAINEL PRECISA SER MODULE POR CAUSA DO FIREBASE -->
+  <script type="module" src="js/painel.js"></script>
 </body>
 </html>
